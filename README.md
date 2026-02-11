@@ -19,11 +19,8 @@
 
 Enfocado en cómo discrepancias entre Content-Type, headers HTTP, meta charset y parsers pueden generar reinterpretaciones binarias explotables.
 
-Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de parsing y negociación de encoding. <br><br>
-<br><br> 
-
-Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.
-<br><br> 
+Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de parsing y negociación de encoding. 
+ 
 
 <br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
