@@ -15,7 +15,11 @@
 
 <br>
 
- **Catálogo técnico interactivo para analizar normalización Unicode aplicada a seguridad web. Enfocado en NFC, NFD, NFKC y NFKD y en cómo discrepancias entre WAF, backend, runtime y navegador generan desalineación semántica explotable. Incluye análisis práctico de equivalencia canónica vs compatibilidad, propiedades de Quick_Check, Composition_Exclusion y comportamiento en distintos puntos del pipeline (input → WAF → backend → runtime → navegador).** 
+ **Investigación aplicada a seguridad web sobre cómo la negociación de charset puede alterar la interpretación real de un payload cuando distintas capas (cliente, WAF, proxy, backend, runtime) no procesan los bytes bajo la misma codificación.<br>
+
+Enfocado en cómo discrepancias entre Content-Type, headers HTTP, meta charset y parsers pueden generar reinterpretaciones binarias explotables.
+
+Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de parsing y negociación de encoding.** <br><br>
 <br><br> 
 
 **Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.** 
@@ -26,25 +30,26 @@
 <br>
 
 ### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzZhdzU1ejBxaXJhaHcwZnVqN2xxcHFhMmI2dWdudnM3ZGd3aDV1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LS8dIaRdiTEFVBSxDF/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
-**Cuando auditás aplicaciones web, muchos asumen que usar homoglyphs o caracteres “raros” es suficiente para bypass.<br><br>
-El problema real es otro:<br><br>
-• No todos los sistemas normalizan igual.<br><br>
-• No todos normalizan en el mismo momento.<br><br>
-• Algunos hacen matching antes de normalizar.<br><br>
-• Otros normalizan en NFKC mientras el backend compara en NFC.</a>.** 
+**En auditorías web es común asumir que cambiar el charset siempre altera el payload.** <br><br>
+El problema real es más preciso:<br><br>
+• La mayoría de los entornos fuerzan UTF-8.<br><br>
+• Muchos WAF inspeccionan asumiendo UTF-8 aunque el backend no lo haga.<br><br>
+• Algunos proxies reescriben headers pero no el body.<br><br>
+• Parsers distintos pueden interpretar los mismos bytes bajo reglas diferentes.<br><br>
 
-<br><br>
+En la práctica, más de 150 charsets existen formalmente (400+ alias), pero casi todo termina convergiendo en UTF-8.<br>
 
-Esto genera:<br><br>
+La reinterpretación binaria real solo ocurre en ciertos encodings específicos.<br><br>
 
-• Falsos positivos en pruebas ofensivas.<br><br>
-• Payloads que “parecen funcionar” pero se recomponen y dejan de ejecutar.<br><br>
-• Ventanas lógicas cuando WAF y backend interpretan distinto el mismo input.<br><br>
+No distinguir esto produce:<br><br>
 
-<br>
+• Pruebas inútiles sin impacto real<br><br>
+• Bypass teóricos sin cambio semántico<br><br>
+• Falsas conclusiones sobre evasión de WAF<br><br>
 
-La superficie real no está en el carácter extraño.
-Está en la desalineación semántica entre capas.
+La superficie explotable no está en “cambiar charset”.<br><br>
+Está en cuándo y cómo se negocia la codificación entre capas.
+
 
 <br>
 
@@ -56,22 +61,27 @@ Está en la desalineación semántica entre capas.
 
 <br>
 
-• Comprensión real de NFC, NFD, NFKC y NFKD en contexto ofensivo.<br><br>
-• Diferenciación técnica entre equivalencia canónica y equivalencia de compatibilidad.<br><br>
-• Análisis del impacto de NFC_Quick_Check=Maybe en validaciones.<br><br>
-• Estudio de Composition_Exclusion y estabilidad post Unicode 4.1.<br><br>
-• Evaluación de normalización en concatenación, buffering y condiciones stream-safe.<br><br>
-• Identificación de escenarios donde el orden de normalización altera el resultado final.
+• Separación técnica entre charsets meramente declarativos y aquellos con reinterpretación binaria real.<br><br>
+• Análisis de inconsistencias entre meta charset y header HTTP Content-Type.<br><br>
+• Estudio del comportamiento real de parsers bajo negociación de encoding.<br><br>
+• Aplicación directa a XSS, filtros frágiles y WAF con inspección previa al decode.<br><br>
 
-<br><br>
+Encodings con potencial de reinterpretación binaria real:<br><br>
 
-Esto permite:<br><br>
+UTF-7<br><br>
+UTF-16 (LE / BE)<br><br>
+UTF-32 (LE / BE)<br><br>
+EBCDIC legacy (cp037, cp273, cp424, cp500, cp875, cp1026, cp1140–cp1149)<br><br>
 
-• Reducir bypass teóricos sin base técnica.<br><br>
-• Detectar inconsistencias reales entre WAF y backend.<br><br>
-• Enfocar pruebas en divergencias observables, no en gimmicks visuales.<br>
+Esto permite:<br><br><br><br>
+
+• Identificar escenarios reales de desalineación binaria.<br><br>
+• Evaluar bypass de WAF basados en decode inconsistente.<br><br>
+• Reducir experimentación ciega y enfocarse en divergencias verificables.
 
 
+
+<br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
@@ -79,18 +89,17 @@ Esto permite:<br><br>
 ### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR3cDVhNXY0bDZteHRkMWNrNmQzMXF4NzJ1MXoyeGU2eXMzNXA4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fYMrCNMFkCeEdwB2Vo/giphy.gif" width = 80px>  </picture> Resumen rápido
 <br><br>
 
-Investigación aplicada a bug bounty ético sobre cómo la normalización Unicode puede modificar la semántica efectiva del input.<br><br>
+Unicode domina la web y casi todo termina en UTF-8 sin reinterpretación real.<br><br>
 
-No es un estudio de “caracteres raros”.<br><br>
+El vector no es “usar encoding raro”.<br><br>
 
-Es un análisis del pipeline completo de interpretación:<br><br>
+El vector aparece cuando dos capas no decodifican los mismos bytes bajo las mismas reglas.<br><br>
 
-input → normalización → matching → backend → runtime → navegador<br><br>
+La explotación surge cuando:<br><br>
 
-Unicode no es solo encoding.
-Es equivalencia semántica formal definida en el estándar.<br><br>
+bytes → decode → matching → backend<br><br>
 
-La explotación aparece cuando dos capas no aplican la misma equivalencia.<br>
+no siguen el mismo estándar en todas las capas.<br><br>
 
 
 
@@ -104,21 +113,17 @@ La explotación aparece cuando dos capas no aplican la misma equivalencia.<br>
 <br><br>
 
 
+• https://www.iana.org/assignments/character-sets/character-sets.xhtml
+Registro oficial de todos los charsets reconocidos y sus alias. Base normativa para identificar codificaciones válidas.<br><br>
+
+• https://encoding.spec.whatwg.org/
+Especificación oficial de cómo los navegadores modernos manejan decodificación de texto y fallback. Fundamental para entender el comportamiento real del parsing en clientes.<br><br>
+
 • https://www.unicode.org/versions/Unicode17.0.0/
-Página oficial de versiones del estándar Unicode. Documenta reglas formales de normalización, estabilidad y definiciones normativas.<br><br>
+Definiciones normativas del estándar Unicode.<br><br>
 
 • https://www.unicode.org/Public/UCD/latest/ucd/
-Unicode Character Database (UCD). Contiene todas las propiedades formales de los codepoints: categorías, decompositions, combining classes, Quick_Check, etc. Es la base técnica real del comportamiento de normalización.<br><br>
-
-• https://www.unicode.org/Public/UCD/latest/ucd/DerivedNormalizationProps.txt
-Archivo derivado que lista propiedades específicas relacionadas con normalización, como NFC_QC, NFKC_QC y Composition_Exclusion. Fundamental para entender qué caracteres pueden cambiar bajo cada forma.<br><br>
-
-• https://util.unicode.org/UnicodeJsps/character.jsp
-Herramienta oficial para inspeccionar propiedades de un codepoint individual.<br><br>
-
-Ejemplo:<br>
-https://util.unicode.org/UnicodeJsps/character.jsp?a=2126
-Permite analizar propiedades como descomposición, Quick_Check y exclusiones de composición en un carácter concreto (U+2126 OHM SIGN).<br>
+Unicode Character Database (propiedades formales de codepoints).<br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
@@ -127,19 +132,21 @@ Permite analizar propiedades como descomposición, Quick_Check y exclusiones de 
 <br><br>
 
 
-Investigación ofensiva con base normativa, centrada en:<br>
+Investigación ofensiva con base normativa, centrada en:<br><br>
 
-• Propiedades formales del estándar Unicode.<br><br>
-• Divergencias reales entre motores de normalización.<br><br>
-• Impacto práctico en WAF, validadores y runtimes.<br><br>
-• Normalización como vector lógico, no visual.<br><br>
+• Negociación real de charset en HTTP.<br><br>
+• Comportamiento práctico de parsers y motores de decode.<br><br>
+• Divergencias entre WAF, proxy y backend.<br><br>
+• Encoding como vector lógico, no visual.<br><br>
+
+“Analiza cómo distintos charsets transforman realmente los bytes, identifica dónde ocurre el decode en el pipeline y detecta inconsistencias entre WAF y backend antes de asumir un bypass.”
  
  <br>
 
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3YwbG9zbmU1amprdTJsbmxzYnpobzd5eGtnazB6b2FmdnllaTRhZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/h8UlsEpqiCISTKUzvz/giphy.gif" width = 80px>  </picture> “Analiza cómo NFC, NFD, NFKC y NFKD transforman realmente el input, identifica en qué punto del pipeline se normaliza y detecta desalineaciones entre WAF, backend y runtime antes de que se conviertan en superficie explotable.”
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3YwbG9zbmU1amprdTJsbmxzYnpobzd5eGtnazB6b2FmdnllaTRhZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/h8UlsEpqiCISTKUzvz/giphy.gif" width = 80px>  </picture>“Examina cómo los distintos charsets reinterpretan bytes en el pipeline HTTP, identifica inconsistencias entre headers, parsers y WAF, y convierte desalineaciones de encoding en superficie explotable.”
 <br>
 
 
