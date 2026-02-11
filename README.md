@@ -11,7 +11,7 @@
 <picture> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">  </picture>
 
 
-### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDBqM3RwOWtxYjh3b2RwYml3ZWptdGxtYWRwdnRyYnkyYXQyZ3B1cSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/B6zEPouWkkekb8exj3/giphy.gif" width = 75px> Normalizacion Unicode y Desalineacion entre Capas.  </picture> 
+### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDBqM3RwOWtxYjh3b2RwYml3ZWptdGxtYWRwdnRyYnkyYXQyZ3B1cSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/B6zEPouWkkekb8exj3/giphy.gif" width = 75px> charsets, parsing y bypass de WAF.  </picture> 
 
 <br>
 
