@@ -37,17 +37,16 @@ El problema real es más preciso:<br><br>
 • Algunos proxies reescriben headers pero no el body.<br><br>
 • Parsers distintos pueden interpretar los mismos bytes bajo reglas diferentes.<br><br>
 
-En la práctica, más de 150 charsets existen formalmente (400+ alias), pero casi todo termina convergiendo en UTF-8.<br>
-
+En la práctica, más de 150 charsets existen formalmente (400+ alias), pero casi todo termina convergiendo en UTF-8.
 La reinterpretación binaria real solo ocurre en ciertos encodings específicos.<br><br>
 
-No distinguir esto produce:<br>
+No distinguir esto produce:
 
 • Pruebas inútiles sin impacto real<br><br>
 • Bypass teóricos sin cambio semántico<br><br>
 • Falsas conclusiones sobre evasión de WAF<br><br>
 
-La superficie explotable no está en “cambiar charset”.<br><br>
+La superficie explotable no está en “cambiar charset”.
 Está en cuándo y cómo se negocia la codificación entre capas.
 
 
@@ -73,7 +72,7 @@ UTF-16 (LE / BE)<br><br>
 UTF-32 (LE / BE)<br><br>
 EBCDIC legacy (cp037, cp273, cp424, cp500, cp875, cp1026, cp1140–cp1149)<br><br>
 
-Esto permite:<br><br><br><br>
+Esto permite:<br><br>
 
 • Identificar escenarios reales de desalineación binaria.<br><br>
 • Evaluar bypass de WAF basados en decode inconsistente.<br><br>
@@ -128,7 +127,7 @@ Unicode Character Database (propiedades formales de codepoints).<br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWV6Y3FmbmxpdjNwd2dhNGMydHh1OHZiZ2cxYTh6a2JxbTNoc3R1YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ZEl47uGZlLY3CRHl5Y/giphy.gif" width = 80px>  </picture> Enfoque
+### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3czEwdWl5ODlnMmN1bHZjMHE4Y2k0ZDBicXJjcmk5MTJianRkOGNkMyZlcD12MV9zdGlja2Vyc19yZWxhdGVkJmN0PXM/W6i1g11QoyU6yJzln6/giphy.gif" width = 80px>  </picture> Enfoque
 <br><br>
 
 
