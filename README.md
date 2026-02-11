@@ -11,7 +11,7 @@
 <picture> <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">  </picture>
 
 
-### <picture> <img src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTJhbnhicXlyNDBiMXJ5d2JoazEyNXY3MHVqYXMyZjZ4ZTdzOWh3MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/S4kCITUXoyg3Gyr1cN/giphy.gif" width = 75px> Normalizacion Unicode y Desalineacion entre Capas.  </picture> 
+### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDBqM3RwOWtxYjh3b2RwYml3ZWptdGxtYWRwdnRyYnkyYXQyZ3B1cSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/B6zEPouWkkekb8exj3/giphy.gif" width = 75px> Normalizacion Unicode y Desalineacion entre Capas.  </picture> 
 
 <br>
 
@@ -29,7 +29,7 @@ Proyecto en investigación activa. El contenido evoluciona conforme se validan n
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzZhdzU1ejBxaXJhaHcwZnVqN2xxcHFhMmI2dWdudnM3ZGd3aDV1dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LS8dIaRdiTEFVBSxDF/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGx6dnUxejR2Z3o1d3JncmhncTNkcGt2anJjNnJsZHc3bmw3ZTV3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/TH2Eh9by37A2wmMHPa/giphy.gif" width = 75px>  </picture> Problema que resuelve<br><br>
 **En auditorías web es común asumir que cambiar el charset siempre altera el payload.** <br><br>
 El problema real es más preciso:<br><br>
 • La mayoría de los entornos fuerzan UTF-8.<br><br>
@@ -41,7 +41,7 @@ En la práctica, más de 150 charsets existen formalmente (400+ alias), pero cas
 
 La reinterpretación binaria real solo ocurre en ciertos encodings específicos.<br><br>
 
-No distinguir esto produce:<br><br>
+No distinguir esto produce:<br>
 
 • Pruebas inútiles sin impacto real<br><br>
 • Bypass teóricos sin cambio semántico<br><br>
@@ -57,7 +57,7 @@ Está en cuándo y cómo se negocia la codificación entre capas.
 
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXVvem9uczRjOTUycTdlM2N0a3h5Mmx1Mnl2eXg4dWg4enFya2d3NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WvkRfmIxMOm6iUYouv/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
+### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWF3ZzZ5NTlpbXA3ZHllMWc1Zjl1Yno5aWF0bXozYWpyemZ3YnVtciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VEUoOncnj5F31yO3g3/giphy.gif" width = 75px>  </picture> Qué aporta y cómo beneficia <br><br>
 
 <br>
 
@@ -86,7 +86,7 @@ Esto permite:<br><br><br><br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR3cDVhNXY0bDZteHRkMWNrNmQzMXF4NzJ1MXoyeGU2eXMzNXA4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fYMrCNMFkCeEdwB2Vo/giphy.gif" width = 80px>  </picture> Resumen rápido
+### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3czEwdWl5ODlnMmN1bHZjMHE4Y2k0ZDBicXJjcmk5MTJianRkOGNkMyZlcD12MV9zdGlja2Vyc19yZWxhdGVkJmN0PXM/9mSxIJ5qFtpv4n8DRC/giphy.gif" width = 80px>  </picture> Resumen rápido
 <br><br>
 
 Unicode domina la web y casi todo termina en UTF-8 sin reinterpretación real.<br><br>
@@ -109,7 +109,7 @@ no siguen el mismo estándar en todas las capas.<br><br>
 <picture> <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width ="1050" > </picture>
 <br>
 
-### <picture> <img src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHR3cDVhNXY0bDZteHRkMWNrNmQzMXF4NzJ1MXoyeGU2eXMzNXA4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/fYMrCNMFkCeEdwB2Vo/giphy.gif" width = 80px>  </picture> Recursos oficiales utilizados
+### <picture> <img src = "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3czEwdWl5ODlnMmN1bHZjMHE4Y2k0ZDBicXJjcmk5MTJianRkOGNkMyZlcD12MV9zdGlja2Vyc19yZWxhdGVkJmN0PXM/OlASCtKlMWXXX9TYQB/giphy.gif" width = 80px>  </picture> Recursos oficiales utilizados
 <br><br>
 
 
