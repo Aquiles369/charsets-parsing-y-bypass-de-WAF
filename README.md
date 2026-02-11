@@ -15,14 +15,14 @@
 
 <br>
 
- **Investigación aplicada a seguridad web sobre cómo la negociación de charset puede alterar la interpretación real de un payload cuando distintas capas (cliente, WAF, proxy, backend, runtime) no procesan los bytes bajo la misma codificación.<br>
+ **Investigación aplicada a seguridad web sobre cómo la negociación de charset puede alterar la interpretación real de un payload cuando distintas capas (cliente, WAF, proxy, backend, runtime) no procesan los bytes bajo la misma codificación.** <br>
 
 Enfocado en cómo discrepancias entre Content-Type, headers HTTP, meta charset y parsers pueden generar reinterpretaciones binarias explotables.
 
 Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de parsing y negociación de encoding.** <br><br>
 <br><br> 
 
-**Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.** 
+**Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.
 <br><br> 
 
 <br>
