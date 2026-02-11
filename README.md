@@ -22,7 +22,7 @@ Enfocado en cómo discrepancias entre Content-Type, headers HTTP, meta charset y
 Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de parsing y negociación de encoding. <br><br>
 <br><br> 
 
-**Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.
+Proyecto en investigación activa. El contenido evoluciona conforme se validan nuevos escenarios de normalización y desalineación entre capas.
 <br><br> 
 
 <br>
