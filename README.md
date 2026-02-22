@@ -112,6 +112,9 @@ no siguen el mismo estándar en todas las capas.<br><br>
 • https://www.iana.org/assignments/character-sets/character-sets.xhtml
 Registro oficial de todos los charsets reconocidos y sus alias. Base normativa para identificar codificaciones válidas.<br><br>
 
+Tips, tener una lista de 400 alias exóticos (como usar macintosh en lugar de mac-roman o nombres raros de la IANA) es explotar que los desarrolladores de WAFs son vagos.
+<br><br>
+
 • https://encoding.spec.whatwg.org/
 Especificación oficial de cómo los navegadores modernos manejan decodificación de texto y fallback. Fundamental para entender el comportamiento real del parsing en clientes.<br><br>
 
